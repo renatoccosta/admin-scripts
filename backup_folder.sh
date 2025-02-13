@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Verificar se foram passados os parâmetros corretos
-if [ $# -lt 2 ]; then
-    echo "Uso: $0 <pasta_origem> <nome_backup> [<usuario_dono>]"
+if [ $# -lt 3 ]; then
+    echo "Uso: $0 <pasta_origem> <pasta_destino> <nome_backup> [<usuario_dono>]"
     exit 1
 fi
 
@@ -16,13 +16,13 @@ if [ ! -d "$source_folder" ]; then
 fi
 
 # Nome do arquivo de backup (passado como parâmetro, concatenado com data e hora)
-backup_name="$2_$(date +"%Y%m%d_%H%M%S").tar.gz"
+backup_name="$3_$(date +"%Y%m%d_%H%M%S").tar.gz"
 
 # Pasta raiz de destino do backup
 backup_root="/home/renato/backups"
 
 # Pasta onde será armazenado o backup
-backup_folder="$backup_root/$2"
+backup_folder="$backup_root/$2/$3"
 
 # Criar a pasta de backup se ela não existir
 mkdir -p $backup_folder
